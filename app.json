@@ -1,5 +1,15 @@
 {
   "expo": {
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "assetExts": [
+        "expo.ts", "expo.tsx",
+        "expo.js", "expo.jsx",
+        "ts", "tsx",
+        "js", "jsx",
+        "json", "wasm"
+      ]
+    },
     "name": "Covid19",
     "slug": "Covid19",
     "version": "1.0.0",
