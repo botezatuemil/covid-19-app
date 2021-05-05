@@ -21,10 +21,8 @@ class gsp():
         numberPosts = 10
         post_curr = 0
 
-        URL = 'https://www.gsp.ro/gsp-special/diverse/coronavirus-ultima-ora-stirile-zilei-despre-pandemia-de-coronavirus-raport-romania-covid-19-626084.html'
-        
+        URL = 'https://www.gsp.ro/gsp-special/diverse/coronavirus-ultima-ora-stirile-zilei-despre-pandemia-de-coronavirus-raport-romania-covid-19-626084.html'      
         source = requests.get(URL).text
-
         soup = BeautifulSoup(source, 'lxml')
 
         for article in soup.find_all('li'):
@@ -41,13 +39,27 @@ class gsp():
             else:
                 break
 
-
         return articles
 
 
-class mai_gov():
-    def cazuri_judete(self):
+class datelazi():
+    def cazuri_pe_tara(self):
         
+        articles = []
+        URL = 'https://datelazi.ro/'
+        source = requests.get(URL).text
+        soup = BeautifulSoup(source, 'html.parser')
+
+        for article in soup.find_all('div', class_='column is-one-third'):
+            try:
+                numbers = article.h3.text
+                articles.append(str(numbers))
+            except:
+                continue
+        return articles
+
+    def incidenta_judet(self):
+
         month = {
             '1' : 'ianuarie',
             '2' : 'februarie',
@@ -62,58 +74,87 @@ class mai_gov():
             '11' : 'noiembrie',
             '12' : 'decembrie'
         }
-
-        articles = []
-
-        d = datetime.date.today()
         
-        URL = 'https://www.mai.gov.ro/informare-covid-19-grupul-de-comunicare-strategica-' + str(d.day) + '-' + str(month[str(d.month)]) +'-ora-13-00/'
-
+        d = datetime.date.today()
+        articles = []     
+        URL = 'https://stirioficiale.ro/informatii/buletin-de-presa-' + str(d.day) + '-' + str(month[str(d.month)]) + '-2021-ora-13-00'
         source = requests.get(URL).text
-
         soup = BeautifulSoup(source, 'html.parser')
+        index = 0
 
         for article in soup.find_all('td'):
-            #print(article)
-            try:
+            if index % 5 == 4 and index > 4:
+                try:
+                    numbers = article.p.text
+                    articles.append(str(numbers))
+                except:
+                    continue
+            index += 1
 
-                city = article.text
-                articles.append(city) 
-            except:
-                continue
-        
-        format_cazuri_judet(articles)
-        #return articles
+            if (index > 215):
+                break
 
+        return articles
 
-class datelazi():
-    def cazuri_pe_tara(self):
+class trt_net():
+    def cazuri_global(self):
 
         articles = []
-
-        URL = 'https://datelazi.ro/'
-
+        URL = 'https://www.trt.net.tr/romana/covid19'
         source = requests.get(URL).text
-
         soup = BeautifulSoup(source, 'html.parser')
+        index = 0
 
-        for article in soup.find_all('div', class_='column is-one-third'):
-            try:
-                numbers = article.h3.text
+        for article in soup.find_all('td'):
+            if index % 5 != 4:
+                try:
+                    crt = article.text
+                    if crt == 30:
+                        break
+                    articles.append(str(crt))     
+                except:
+                    continue
+            
+            if (index > 148):
+                break
 
-                print(numbers)
-            except:
-                continue
+            index += 1
+            
+        return articles
 
+class my_dictionary(dict):
+    def __ini__(self):
+        self = dict()
 
-
-
+    def add(self, key, value):
+        self[key] = [value]
 
 if __name__ == '__main__':
-    # print(gsp().cazuri_totale())
-    # print(mai_gov().cazuri_judete())
-    # datelazi().cazuri_pe_tara()
-    print(json.dumps(mai_gov().cazuri_judete()))
-   
-    #print(d.month, d.day)
-    #print(datetime.)
+
+    scrappedData = datelazi().cazuri_pe_tara()
+    scrappedIncidentaData = datelazi().incidenta_judet()
+    scrappedGlobalData = trt_net().cazuri_global()
+
+
+    dataGeneral = my_dictionary()
+    for i in range(1, 6):
+        dataGeneral.add(i, scrappedData[i - 1])
+
+    dateIncidenta = my_dictionary()
+    for i in range(1, 43):
+        dateIncidenta.add(i, scrappedIncidentaData[i - 1])
+
+    dateGlobal = my_dictionary()
+    for i in range (1, 121):
+        dateGlobal.add(i, scrappedGlobalData[i - 1])
+
+
+    with open('C:\\Emil\\Proiecte\\JavaScript\\React Native\\Covid19\\data.json', 'w') as f:
+        json.dump(dataGeneral, f)
+    
+    with open('C:\\Emil\\Proiecte\\JavaScript\\React Native\\Covid19\\dataLocal.json', 'w') as f:
+        json.dump(dateIncidenta, f)
+    
+    with open('C:\\Emil\\Proiecte\\JavaScript\\React Native\\Covid19\\dataGlobal.json', 'w') as f:
+        json.dump(dateGlobal, f)
+ 
