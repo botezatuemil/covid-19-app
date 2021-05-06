@@ -5,8 +5,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator} from '@react-navigation/stack';
 import  Home  from './screens/Home'
 import  Tabs  from './screens/Tabs'
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 
 
 const Stack = createStackNavigator();
@@ -34,8 +32,7 @@ const App = () => {
           headerShown : false
           
         }}
-      >
-        
+      >    
         <Stack.Screen name="Home" component={Tabs} /> 
         {/* <Stack.Screen name="Details" component={DetailsScreen} /> */}
         

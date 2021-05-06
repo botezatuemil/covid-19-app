@@ -3,6 +3,13 @@ import { View, Text, SafeAreaView, FlatList, TouchableOpacity, Image } from 'rea
 import Header from '../containers/Header'
 import CovidData from '../containers/LocalData'
 
+import AppLoading from 'expo-app-loading';
+import {useFonts} from 'expo-font';
+import {
+  Nunito_700Bold,
+  Nunito_800ExtraBold
+} from '@expo-google-fonts/nunito';
+
 const Local = () => {
 
     const [data, setData] = React.useState(CovidData)
@@ -22,19 +29,17 @@ const Local = () => {
               backgroundColor: item.backgroundColor,
               borderRadius: 15,
               marginBottom: 15,
-              
             }}
             >
           
               <Text 
                 style={{
-                  marginTop: 20,
+                  marginTop: 18,
                   marginLeft: 40,
                   color: item.textColor,
-                  fontWeight: '500',
                   position: 'absolute',
-                  fontSize: 22
-                  //fontFamily: 'Roboto'
+                  fontSize: 22,
+                  fontFamily: 'Nunito_700Bold'
                 }}
                 
               >
@@ -43,12 +48,11 @@ const Local = () => {
     
               <Text
                   style={{
-                    marginTop: 20,
+                    marginTop: 18,
                     marginLeft: 260,
                     color: item.textColor,
-                    fontWeight: '500',
-                    fontSize: 22
-                    //fontFamily: 'roboto'
+                    fontSize: 22,
+                    fontFamily: 'Nunito_700Bold'
                   }}
                 >
                 {item.numberCases}
@@ -68,6 +72,15 @@ const Local = () => {
               contentContainerStyle={{ paddingBottom: 300 }}
             />
         )
+    }
+
+    let [fontsLoaded, error] = useFonts ({
+      Nunito_700Bold,
+      Nunito_800ExtraBold
+    })
+
+    if (!fontsLoaded) {
+      return <AppLoading/>
     }
 
     return (

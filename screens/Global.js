@@ -3,6 +3,13 @@ import { View, Text, SafeAreaView, FlatList, TouchableOpacity, Image } from 'rea
 import CovidData from '../containers/GlobalData';
 import Header from '../containers/Header'
 
+import AppLoading from 'expo-app-loading';
+import {useFonts} from 'expo-font';
+import {
+  Nunito_700Bold,
+  Nunito_800ExtraBold
+} from '@expo-google-fonts/nunito';
+
 const Global = () => {
     const [data, setData] = React.useState(CovidData)
     
@@ -30,10 +37,9 @@ const Global = () => {
                   marginTop: 20,
                   marginLeft: 40,
                   color: item.textColor,
-                  fontWeight: '700',
                   position: 'absolute',
-                  fontSize: 22
-                  //fontFamily: 'Roboto'
+                  fontSize: 22,
+                  fontFamily: 'Nunito_800ExtraBold'
                 }}
                 
               >
@@ -44,12 +50,11 @@ const Global = () => {
               <Text
                   style={{
                     position: 'absolute',
-                    marginTop: 80,
+                    marginTop: 70,
                     marginLeft: 40,
                     color: item.textColor,
-                    fontWeight: '700',
-                    fontSize: 14
-                    //fontFamily: 'roboto'
+                    fontSize: 14,
+                    fontFamily: 'Nunito_700Bold'
                   }}
                 >
                 Total cazuri: {item.cazuriTotale}
@@ -58,12 +63,11 @@ const Global = () => {
               <Text
                   style={{
                     position: 'absolute',
-                    marginTop: 110,
+                    marginTop: 100,
                     marginLeft: 40,
-                    color: item.textColor,
-                    fontWeight: '700',
-                    fontSize: 14
-                    //fontFamily: 'roboto'
+                    color: item.textColor,                  
+                    fontSize: 14,
+                    fontFamily: 'Nunito_700Bold'
                   }}
                 >
                 Total decese: {item.decese}
@@ -72,12 +76,11 @@ const Global = () => {
               <Text
                   style={{
                     position: 'absolute',
-                    marginTop: 140,
+                    marginTop: 130,
                     marginLeft: 40,
                     color: item.textColor,
-                    fontWeight: '700',
-                    fontSize: 14
-                    //fontFamily: 'roboto'
+                    fontSize: 14,
+                    fontFamily: 'Nunito_700Bold'
                   }}
                 >
                 Total vindecati: {item.vindecati}
@@ -97,6 +100,14 @@ const Global = () => {
               contentContainerStyle={{ paddingBottom: 250 }}
             />
         )
+    }
+
+    let [fontsLoaded, error] = useFonts ({
+      Nunito_700Bold,
+      Nunito_800ExtraBold
+    })
+    if (!fontsLoaded) {
+      return <AppLoading/>
     }
 
     return (

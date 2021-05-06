@@ -5,13 +5,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator} from '@react-navigation/stack';
 import { BottomTabBar } from '@react-navigation/bottom-tabs';
 import CovidData from '../containers/GeneralData';
-import AppLoading from 'expo-app-loading';
 import Header from '../containers/Header'
-
+import AppLoading from 'expo-app-loading';
+import {useFonts} from 'expo-font';
 import {
-  useFonts,
-  Inter_900Black,
-} from '@expo-google-fonts/inter';
+  Nunito_700Bold,
+} from '@expo-google-fonts/nunito';
 
 //const Stack = createStackNavigator();
 // const spawn = require('child_process').spawn;
@@ -54,12 +53,11 @@ const Home = ({navigation}) => {
       
           <Text 
             style={{
-              marginTop: 20,
+              marginTop: 24,
               marginLeft: 170,
               color: item.textColor,
-              fontWeight: '500',
               position: 'absolute',
-              //fontFamily: 'Roboto'
+              fontFamily: 'Nunito_700Bold'
             }}
             
           >
@@ -71,9 +69,8 @@ const Home = ({navigation}) => {
                 marginTop: 20,
                 marginLeft: 20,
                 color: item.textColor,
-                fontWeight: '500',
-                fontSize: 25,
-                //fontFamily: 'roboto'
+                fontSize: 22,
+                fontFamily: 'Nunito_700Bold'
               }}
             >
             {item.numberCases}
@@ -96,13 +93,13 @@ const Home = ({navigation}) => {
         />
     )
   }
-
-  let [fontsLoaded] = useFonts ({
-    Inter_900Black,
+  
+  let [fontsLoaded, error] = useFonts ({
+    Nunito_700Bold,
   })
   if (!fontsLoaded) {
     return <AppLoading/>
-  } 
+  }
     return (   
      
       <SafeAreaView style={{
@@ -113,7 +110,7 @@ const Home = ({navigation}) => {
         }}
       >
         <Header backgroundColor='#293077'/>
-        {renderData()}
+        {renderData()}  
       </SafeAreaView>  
     )
 }

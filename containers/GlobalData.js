@@ -6,9 +6,6 @@ var a, b, c ,d;
 
 var len = Object.keys(customData).length
 for (var i = 1; i < len; i++) {
-    // data[id] = i + 1;
-    // data[backgroundColor] = 'white';
-    // data['textColor'] = 'black';
 
     if (i % 4 == 1) {
        a = customData[i];
@@ -36,14 +33,5 @@ for (var i = 1; i < len; i++) {
         })
     }
 }
-
-    console.log(CovidData)
-// const CovidGlobalData = [
-//     {
-//         id: 1,
-//         backgroundColor: 'white',
-//         country: customData[]
-//     }
-// ]
 
 export default CovidData
