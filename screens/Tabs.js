@@ -4,7 +4,7 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View, Button, Image, Toucha
 import  Home  from './Home'
 import  Local  from './Local'
 import  Global  from './Global'
-import  Settings  from './Settings'
+import  Map  from './Map'
 import Svg, {
     Path
 } from 'react-native-svg'
@@ -164,7 +164,7 @@ const Tabs = () => {
                     tabBarIcon: ({focused}) => {
                         return (
                             <Image
-                                source={require('../assets/icons/local.png')}
+                                source={require('../assets/icons/local2.png')}
                                 resizeMode='contain'
                                 style={{width: 27, height: 27, tintColor: focused ? 'white' : '#4F4F4F'}}
                                 
@@ -179,14 +179,14 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name="Settings"
-                component={Settings}
+                name="Map"
+                component={Map}
                 options={{
                     //tabBarLabel:() => {return null},
                     tabBarIcon: ({focused}) => {
                         return (
                             <Image
-                                source={require('../assets/icons/settings.png')}
+                                source={require('../assets/icons/local.png')}
                                 resizeMode='contain'
                                 style={{width: 27, height: 27, tintColor: focused ? 'white' : '#4F4F4F'}}
                                 
