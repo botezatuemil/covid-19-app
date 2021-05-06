@@ -20,7 +20,7 @@ const Local = () => {
           <TouchableOpacity
             style={{
               alignItems: 'center',
-              top: 200,
+              top: 20,
             }}
           >
             <View style={{
@@ -69,7 +69,7 @@ const Local = () => {
               keyExtractor={item => `${item.id}`}
               renderItem={renderItem}
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ paddingBottom: 300 }}
+              contentContainerStyle={{ paddingBottom: 100 }}
             />
         )
     }
@@ -91,18 +91,7 @@ const Local = () => {
             backgroundColor: '#F2F5FC'
           }}
         >
-           
-            <Header backgroundColor='#293077'/>
-            <Image
-                source={require('../assets/icons/incidentaZile.png')}
-                style={{
-                    position: 'absolute',
-                    top: 40,
-                    width: '70%',
-                    height: '70%',
-                    resizeMode: 'contain'
-                }}
-            />
+            <Header backgroundColor='#293077' header='Incidența înregistrată la 4 zile'/>
             {renderData()}
         </SafeAreaView>
     )

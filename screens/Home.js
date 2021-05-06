@@ -109,7 +109,7 @@ const Home = ({navigation}) => {
           justifyContent: 'center' 
         }}
       >
-        <Header backgroundColor='#293077'/>
+        <Header backgroundColor='#293077' header='STAY HOME, STAY SAFE'/>
         {renderData()}  
       </SafeAreaView>  
     )

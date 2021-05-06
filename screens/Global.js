@@ -119,17 +119,7 @@ const Global = () => {
           }}
         >
            
-            <Header backgroundColor='#293077'/>
-            {/* <Image
-                source={require('../assets/icons/incidentaZile.png')}
-                style={{
-                    position: 'absolute',
-                    top: 40,
-                    width: '70%',
-                    height: '70%',
-                    resizeMode: 'contain'
-                }}
-            /> */}
+            <Header backgroundColor='#293077' header='SITUAȚIA GLOBALĂ'/>
             {renderData()}
         </SafeAreaView>
     )
