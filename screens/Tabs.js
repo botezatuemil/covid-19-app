@@ -87,6 +87,7 @@ const TabBarCustomButton = ({ accessibilityLabel, accessibilityState, children, 
 const Tabs = () => {
     const [check, setCheck] = React.useState(true);
     return (
+        <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
             initialRouteName="Home"
             //activeColor='green'
@@ -201,6 +202,7 @@ const Tabs = () => {
                 }}
             />
         </Tab.Navigator>
+        </SafeAreaView>
     )
 }
 
