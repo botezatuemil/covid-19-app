@@ -12,22 +12,6 @@ import {
   Nunito_700Bold,
 } from '@expo-google-fonts/nunito';
 
-//const Stack = createStackNavigator();
-// const spawn = require('child_process').spawn;
-
-// (async function() {
-// const pythonProccess = spawn('python3', ['C:\\Emil\\Proiecte\\Python\\Proiecte_Python\\Automation\\Covid-19\\covid19.py'])
-
-// pythonProccess.stdout.on('data', (data) => {
-
-//   mystr = data.toString();
-//   myjson = JSON.parse(mystr);
-//   global.link = myjson
-//   console.log(myjson);
-// })
-// });
-
-
 const Home = ({navigation}) => {
  
   const [data, setData] = React.useState(CovidData)
@@ -82,6 +66,7 @@ const Home = ({navigation}) => {
 
     return (
       <FlatList
+          automaticallyAdjustContentInsets={ false }
           data={data}
           numColumns={1}
           keyExtractor={item => `${item.id}`}
@@ -109,8 +94,10 @@ const Home = ({navigation}) => {
           justifyContent: 'center' 
         }}
       >
+        
         <Header backgroundColor='#293077' header='STAY HOME, STAY SAFE'/>
         {renderData()}  
+        
       </SafeAreaView>  
     )
 }

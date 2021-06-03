@@ -5,38 +5,32 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator} from '@react-navigation/stack';
 import  Home  from './screens/Home'
 import  Tabs  from './screens/Tabs'
-
-
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItem
+} from '@react-navigation/drawer'
+import DrawerNavigator from './containers/DrawerMenu/DrawerScreen'
 const Stack = createStackNavigator();
-
-// const DetailsScreen = () => {
-//   return (
-//     <View style={{
-//         flex: 1,
-//         //position: 'absolute', 
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//       }}
-//     >
-//       <Text>Details Screen</Text>
-//     </View>
-//   );
-// };
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+     {/* <Stack.Navigator
+      screenOptions = {{
+        headerShown:false
+      }}
       
-        screenOptions = {{
-          headerShown : false
-          
-        }}
-      >    
+    >    
         <Stack.Screen name="Home" component={Tabs} /> 
-        {/* <Stack.Screen name="Details" component={DetailsScreen} /> */}
-        
-      </Stack.Navigator>
+      </Stack.Navigator> */}
+      
+        <DrawerNavigator>
+          screenOptions = {{
+            headerShown: false
+          }}
+
+        </DrawerNavigator>
     </NavigationContainer>
   )
 }

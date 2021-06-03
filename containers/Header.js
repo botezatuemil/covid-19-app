@@ -9,6 +9,10 @@ import {
   Nunito_400Regular
 } from '@expo-google-fonts/nunito';
 
+import { NavigationContainer } from '@react-navigation/native'
+const Stack = createStackNavigator();
+import { createStackNavigator} from '@react-navigation/stack';
+
 const Header = (props) => {
 
   let [fontsLoaded, error] = useFonts ({
@@ -29,18 +33,19 @@ const Header = (props) => {
         borderBottomRightRadius: 40,      
       }}    
       >
-        <TouchableOpacity style={{marginLeft: 340}}>
+        
+        <TouchableOpacity >
           <Image
             source={require('../assets/icons/hamburgerMenu2.png')}
             style={{
-            top: 35,
-            width: '50%',
-            height: '50%',
-            resizeMode: 'contain'
-          }}  
+              top: 50,
+              marginLeft: 250,
+              width: '40%',
+              height: '40%',    
+              resizeMode: 'contain'
+            }}  
         /> 
-        </TouchableOpacity> 
-  
+            </TouchableOpacity> 
         <Text style={{
           position: 'absolute',
           top: 45,
@@ -66,7 +71,7 @@ const Header = (props) => {
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <Text style={{
               textAlignVertical: "center",
-              top: 70,
+              top: 80,
               fontSize: 24,
               fontFamily: 'Nunito_700Bold',
               color: '#75E8F0',
