@@ -7,11 +7,16 @@ import {
     DrawerContentScrollView,
     DrawerItem
 } from '@react-navigation/drawer'
-import Profile from './Profile'
 import TabNavigator from '../../screens/Tabs'
+import {DrawerContent} from './DrawerContent'
+
 
 const Drawer = createDrawerNavigator()
 const Stack = createStackNavigator();
+
+import Profile from './Profile'
+import Share from './Share'
+import About from './About'
 
 const MenuButton = ({navigation}) => (
     <Stack.Navigator>  
@@ -25,11 +30,13 @@ const MenuButton = ({navigation}) => (
             
 
 
-const DrawerScreen = ({navigation}) => {
+const DrawerScreen = () => {
     return  ( 
-        <Drawer.Navigator>   
+        <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>   
             <Drawer.Screen name="Menu" component={MenuButton}/> 
             <Drawer.Screen name="Profile" component={Profile}/>
+            <Drawer.Screen name="Share" component={Share}/>
+            <Drawer.Screen name="About" component={About}/>
         </Drawer.Navigator>   
     )
 }
