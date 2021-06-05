@@ -17,6 +17,7 @@ const Stack = createStackNavigator();
 import Profile from './Profile'
 import Share from './Share'
 import About from './About'
+import Settings from './Settings'
 
 const MenuButton = ({navigation}) => (
     <Stack.Navigator>  
@@ -37,6 +38,7 @@ const DrawerScreen = () => {
             <Drawer.Screen name="Profile" component={Profile}/>
             <Drawer.Screen name="Share" component={Share}/>
             <Drawer.Screen name="About" component={About}/>
+            <Drawer.Screen name="Settings" component={Settings}/>
         </Drawer.Navigator>   
     )
 }

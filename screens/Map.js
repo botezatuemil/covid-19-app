@@ -51,7 +51,7 @@ const Map = () => {
                         width: '80%',
                         height: '80%',
                         top: -120,
-                        marginLeft: 20,
+                        marginLeft: 40,
                     }}
                 />
             </View>
@@ -59,7 +59,7 @@ const Map = () => {
             <View 
                 style={{
                     position: 'absolute', 
-                    marginLeft: 80,
+                    marginLeft: 100,
                     top: 88,
                 
                 }}

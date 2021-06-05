@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Image, TouchableOpacity, Text, Button, TouchableHighlight } from 'react-native'
+import { View, Image, TouchableOpacity, Text, Button, TouchableHighlight, Share } from 'react-native'
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -19,11 +19,20 @@ import {
   Nunito_400Regular
 } from '@expo-google-fonts/nunito';
 
+import {
+    OpenSans_400Regular
+} from '@expo-google-fonts/open-sans'
 
 
 export function DrawerContent(props) {
 
+    let inputValue = "Share with friends"
     const [isDarkTheme, setIsDarkTheme] = React.useState(false)
+    const ShareMessage = () => {
+        Share.share({message: inputValue})
+        .then((result) => console.log(result))
+        .catch((errorMsg) => console.log(errorMsg))
+    }
 
     const toggleTheme = () => {
         setIsDarkTheme(!isDarkTheme)
@@ -31,7 +40,8 @@ export function DrawerContent(props) {
     let [fontsLoaded, error] = useFonts ({
         Nunito_700Bold,
         Nunito_800ExtraBold,
-        Nunito_400Regular
+        Nunito_400Regular,
+        OpenSans_400Regular,
     })
     
     if (!fontsLoaded) {
@@ -44,7 +54,7 @@ export function DrawerContent(props) {
                     <Image
                         source={require('../../assets/icons/coronaSplash.png')}
                         style={{
-                            top: -20,
+                            top: -22,
                             resizeMode:'contain',
                             width: 280,
                             height: 200,
@@ -88,7 +98,7 @@ export function DrawerContent(props) {
                 <Drawer.Item
                     icon={require('../../assets/icons/share.png')}
                     label='Share'
-                    onPress={() => {props.navigation.navigate('Share')}}
+                    onPress={ShareMessage}
                 >
                   
                 </Drawer.Item>
@@ -119,7 +129,7 @@ export function DrawerContent(props) {
                 <Drawer.Item
                         icon={require('../../assets/icons/settings.png')}
                         label='Settings'
-                        onPress={() => {props.navigation.navigate('About')}}
+                        onPress={() => {props.navigation.navigate('Settings')}}
                     >
                 </Drawer.Item>
             </Drawer.Section>
@@ -128,7 +138,7 @@ export function DrawerContent(props) {
                 <TouchableRipple onPress={() => {toggleTheme()}}>
                     <View style={{flexDirection: 'row', paddingVertical: 12}}>
                         <View pointerEvents='none'>
-                            <Switch style={{marginLeft: 15,}} value={isDarkTheme}/>
+                            <Switch style={{marginLeft: 15,}} value={isDarkTheme} color='#75E8F0'/>
                         </View>
                         <Text style={{fontFamily: 'Nunito_700Bold', color: '#575656', marginLeft: 12}}>Dark Theme</Text>
                     </View>
@@ -136,7 +146,7 @@ export function DrawerContent(props) {
             </Drawer.Section>
             
 
-            <Drawer.Section style={{top : 145, borderTopWidth: 1, borderTopColor: '#f4f4f4', borderBottomWidth: 0}}>
+            <Drawer.Section style={{top : 195, borderTopWidth: 1, borderTopColor: '#f4f4f4', borderBottomWidth: 0}}>
                 <Drawer.Item
                         icon={require('../../assets/icons/open_in_new.png')}
                         label='Log out'

@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, DarkTheme } from '@react-navigation/native'
 import { createStackNavigator} from '@react-navigation/stack';
 import  Home  from './screens/Home'
 import  Tabs  from './screens/Tabs'
@@ -11,6 +11,7 @@ import {
   DrawerItem
 } from '@react-navigation/drawer'
 import DrawerNavigator from './containers/DrawerMenu/DrawerScreen'
+
 const Stack = createStackNavigator();
 
 const App = () => {
