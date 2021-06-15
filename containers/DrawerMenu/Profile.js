@@ -61,7 +61,7 @@ function BodyCard1() {
             <View
                 style={{
                     position: 'absolute',
-                    backgroundColor: '#2D2C2C',
+                    backgroundColor: '#1C1C1C',
                     width: 410,
                     height: 180,
                     top: 118,
@@ -134,7 +134,7 @@ function BodyCard2() {
         <View
             style={{
                 position: 'absolute',
-                backgroundColor: '#2D2C2C',
+                backgroundColor: '#1C1C1C',
                 width: 410,
                 height: 180,
                 top: 472,
@@ -301,7 +301,7 @@ const BodyCard3 = (props) => {
         <View
             style={{
                 position: 'absolute',
-                backgroundColor: '#2D2C2C',
+                backgroundColor: '#1C1C1C',
                 width: 410,
                 height: 180,
                 bottom:0,
@@ -410,7 +410,7 @@ const Profile = ({navigation}) =>  {
         <View 
             style={{
                 flex: 1,
-                backgroundColor: '#181818'
+                backgroundColor: '#0D0D0D'
             }}
         >
             {Header()}
