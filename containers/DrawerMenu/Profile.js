@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState}  from 'react'
 import { View, Text, TouchableOpacity, Image, TextInput, TouchableWithoutFeedback } from 'react-native'
 
 import AppLoading from 'expo-app-loading';
@@ -66,6 +66,7 @@ function BodyCard1() {
                     height: 180,
                     top: 118,
                     borderBottomLeftRadius: 40,
+                    borderBottomRightRadius: 40,
                 }}
             >
             </View>
@@ -297,6 +298,10 @@ function BodyCard2() {
 }
 
 const BodyCard3 = (props) => {
+
+    const [text, setText] = useState()
+    
+
     return (
         <View
             style={{
@@ -321,7 +326,26 @@ const BodyCard3 = (props) => {
                 Activity level
             </Text>
 
-            <TouchableWithoutFeedback onPress={() => props.setActivity1(!props.activity1)}> 
+            <TouchableWithoutFeedback 
+                onPress={() => {
+                    if (props.activity1 == false) {
+                        setText("Sedentary")
+                        props.setActivity1(!props.activity1); 
+
+                        if (props.activity2 == true) {
+                            props.setActivity2(!props.activity2);
+                        }
+
+                        if (props.activity3 == true) {
+                            props.setActivity3(!props.activity3);
+                        }
+
+                        if (props.activity4 == true) {
+                            props.setActivity4(!props.activity4);
+                        }
+                    }
+                }}> 
+
                 <Image
                     source={props.activity1 ? require('../../assets/icons/activityState1Outline.png') : require('../../assets/icons/activityState1.png')}
                     style={{
@@ -334,7 +358,27 @@ const BodyCard3 = (props) => {
                 />
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => props.setActivity2(!props.activity2)}> 
+            <TouchableWithoutFeedback 
+                onPress={() => {
+                    if (props.activity2 == false) {
+                        setText("Somewhat active")
+                        props.setActivity2(!props.activity2); 
+
+                        if (props.activity1 == true) {
+                            props.setActivity1(!props.activity1);
+                        }
+
+
+                        if (props.activity3 == true) {
+                            props.setActivity3(!props.activity3);
+                        }
+
+                        if (props.activity4 == true) {
+                            props.setActivity4(!props.activity4);
+                        }
+                    }
+                    
+                }}> 
                 <Image
                     source={props.activity2 ? require('../../assets/icons/activityState2Outline.png') : require('../../assets/icons/activityState2.png')}
                     style={{
@@ -347,7 +391,27 @@ const BodyCard3 = (props) => {
                 />
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => props.setActivity3(!props.activity3)}> 
+            <TouchableWithoutFeedback 
+                onPress={() => {
+                    
+                    if (props.activity3 == false) {
+                        setText("Active")
+                        props.setActivity3(!props.activity3); 
+
+                        if (props.activity1 == true) {
+                            props.setActivity1(!props.activity1);
+                        }
+
+                        if (props.activity2 == true) {
+                            props.setActivity2(!props.activity2);
+                        }
+
+                        if (props.activity4 == true) {
+                            props.setActivity4(!props.activity4);
+                        }
+                    }
+                
+                }}> 
                 <Image
                     source={props.activity3 ? require('../../assets/icons/activityState3Outline.png') : require('../../assets/icons/activityState3.png')}
                     style={{
@@ -360,7 +424,28 @@ const BodyCard3 = (props) => {
                 />
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => props.setActivity4(!props.activity4)}> 
+            <TouchableWithoutFeedback 
+                onPress={() => {
+                    if (props.activity4 == false) {
+
+                        setText("Very active")
+                        props.setActivity4(!props.activity2); 
+
+                        if (props.activity1 == true) {
+                            props.setActivity1(!props.activity1);
+                        }
+
+                        if (props.activity2 == true) {
+                            props.setActivity2(!props.activity2);
+                        }
+
+                        if (props.activity3 == true) {
+                            props.setActivity3(!props.activity3);
+                        }
+                    }
+                    
+                }}> 
+
                 <Image
                     source={props.activity4 ? require('../../assets/icons/activityState4Outline.png') : require('../../assets/icons/activityState4.png')}
                     style={{
@@ -382,7 +467,7 @@ const BodyCard3 = (props) => {
                     color: '#00F87A'
                 }}
             >
-                Active
+                {text}
             </Text>
         </View>
     )
