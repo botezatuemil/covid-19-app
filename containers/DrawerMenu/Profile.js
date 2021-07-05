@@ -11,11 +11,16 @@ import {
 
 import { Dimensions } from 'react-native'
 
-function Header() {
+import Tabs from '../../screens/Tabs'
+import { createStackNavigator} from '@react-navigation/stack'
+import { useNavigation } from '@react-navigation/native';
 
+const Stack = createStackNavigator();
+// const navigation = useNavigation();
 
+function Header(props) {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigate(Tabs)}>
             <Image
                 source={require('../../assets/icons/backButton.png')}
                 style={{
@@ -35,7 +40,7 @@ function Header() {
                     fontSize: 18,
                 }}
             >
-                Profile
+                Home
             </Text>
         </TouchableOpacity>
     )
@@ -473,7 +478,9 @@ const BodyCard3 = (props) => {
     )
 }
 
-const Profile = ({navigation}) =>  {
+const Profile = () =>  {
+    
+    const navigation = useNavigation();
 
     const [activity1, setActivity1] = React.useState(false)
     const [activity2, setActivity2] = React.useState(false)
@@ -498,7 +505,7 @@ const Profile = ({navigation}) =>  {
                 backgroundColor: '#0D0D0D'
             }}
         >
-            {Header()}
+            {Header(navigation)}
             {BodyCard1()}
             {BodyCard2()}
             <BodyCard3 
@@ -514,6 +521,8 @@ const Profile = ({navigation}) =>  {
                 setActivity4={setActivity4} 
                 activity4={activity4}
             />
+
+
         </View>
     )
 }

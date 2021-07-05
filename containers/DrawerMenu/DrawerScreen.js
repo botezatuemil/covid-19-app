@@ -18,6 +18,8 @@ import Profile from './Profile'
 import Share from './Share'
 import About from './About'
 import Settings from './Settings'
+import Home from '../../screens/Home';
+import InformationCenter from './InformationCenter';
 
 const MenuButton = ({navigation}) => (
     <Stack.Navigator>  
@@ -39,6 +41,7 @@ const DrawerScreen = () => {
             <Drawer.Screen name="Share" component={Share}/>
             <Drawer.Screen name="About" component={About}/>
             <Drawer.Screen name="Settings" component={Settings}/>
+            <Drawer.Screen name="InformationCenter" component={InformationCenter}/>
         </Drawer.Navigator>   
     )
 }

@@ -114,7 +114,7 @@ export function DrawerContent(props) {
                 <Drawer.Item
                     icon={require('../../assets/icons/help_outline.png')}
                     label='COVID-19 Info Center'
-                    onPress={() => {props.navigation.navigate('About')}}
+                    onPress={() => {props.navigation.navigate('InformationCenter')}}
                 >
                   
                 </Drawer.Item> 
