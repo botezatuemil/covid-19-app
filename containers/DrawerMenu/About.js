@@ -201,7 +201,7 @@ function Footer() {
                 }}
             />
             
-            <Text onPress={ ()=>{ Linking.openURL('https://github.com/noSpaghettiCode')}}
+            <Text onPress={()=>{ Linking.openURL('https://github.com/noSpaghettiCode')}}
                 style={{
                     fontFamily: 'Nunito_700Bold',
                     color: 'white',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Image, TouchableOpacity, Text, Button, TouchableHighlight, Share } from 'react-native'
+import { View, Image, TouchableOpacity, Text, Button, TouchableHighlight, Share, BackHandler } from 'react-native'
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -150,7 +150,7 @@ export function DrawerContent(props) {
                 <Drawer.Item
                         icon={require('../../assets/icons/open_in_new.png')}
                         label='Log out'
-                        onPress={() => {props.navigation.navigate('About')}}
+                        onPress={() => BackHandler.exitApp()}
                     >
                 </Drawer.Item>
             </Drawer.Section>
