@@ -42,7 +42,7 @@
       },
       "config": {
         "googleMaps": {
-           "apiKey": "AIzaSyBH8RSoDlWRXCFbqYe3wEzTmyUINUl_CGg"
+           "apiKey": ""
         }
       },
       "package": "com.covid"
